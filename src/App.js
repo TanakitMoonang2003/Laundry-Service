@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LaundryForm from "./LaundryForm";
 import LaundryList from "./LaundryList";
+import "./index.css"; 
 
 export default function App() {
   const [laundryItems, setLaundryItems] = useState([]);
@@ -14,12 +15,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-400 to-indigo-600 flex flex-col items-center justify-center p-6">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-4">🧺 ระบบร้านซักผ้า</h1>
-        <LaundryForm addLaundryItem={addLaundryItem} />
-        <LaundryList items={laundryItems} removeLaundryItem={removeLaundryItem} />
-      </div>
+    <div className="container">
+      <h1>🧺 ระบบร้านซักผ้า</h1>
+      <LaundryForm addLaundryItem={addLaundryItem} />
+      <LaundryList items={laundryItems} removeLaundryItem={removeLaundryItem} />
     </div>
   );
 }

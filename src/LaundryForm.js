@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export default function LaundryForm({ addLaundryItem }) {
   const [input, setInput] = useState("");
-  const [category, setCategory] = useState("เสื้อ"); // ค่าเริ่มต้นเป็น 'เสื้อ'
+  const [category, setCategory] = useState("เสื้อ"); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
