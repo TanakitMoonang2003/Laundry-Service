@@ -1,24 +1,27 @@
-import React, { useState } from "react";
-import LaundryForm from "./LaundryForm";
-import LaundryList from "./LaundryList";
-import "./index.css"; 
+import React from 'react';
+import { LaundryProvider } from './context/LaundryContext';
+import CustomerManager from './components/Customer/CustomerManager';
+import MachineList from './components/LaundryMachine/MachineList';
+import NotificationBanner from './components/Notification/NotificationBanner';
+import NotificationHistory from './components/Notification/NotificationHistory';
+import LineConfigModal from './components/LineConfig/LineConfigModal';
+import LineNotification from './components/Notification/LineNotification';
 
-export default function App() {
-  const [laundryItems, setLaundryItems] = useState([]);
-
-  const addLaundryItem = (item, category) => {
-    setLaundryItems([...laundryItems, { name: item, category }]);
-  };
-
-  const removeLaundryItem = (index) => {
-    setLaundryItems(laundryItems.filter((_, i) => i !== index));
-  };
-
+const App = () => {
   return (
-    <div className="container">
-      <h1>🧺 ระบบร้านซักผ้า</h1>
-      <LaundryForm addLaundryItem={addLaundryItem} />
-      <LaundryList items={laundryItems} removeLaundryItem={removeLaundryItem} />
-    </div>
+    <LaundryProvider>
+      <div className="p-6 max-w-4xl mx-auto">
+        <h1 className="text-2xl font-bold mb-6 text-center">ระบบเครื่องซักผ้า</h1>
+        
+        <LineNotification />
+        <CustomerManager />
+        <MachineList />
+        <NotificationHistory />
+        <NotificationBanner />
+        <LineConfigModal />
+      </div>
+    </LaundryProvider>
   );
-}
+};
+
+export default App;
